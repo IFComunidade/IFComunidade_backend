@@ -1,0 +1,15 @@
+[project]
+name = "IFComunidade_backend"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "carloshenriqueok", email = "ifcarloshenrique@gmail.com"},
+]
+dependencies = ["django>=5.2.3"]
+requires-python = "==3.13.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
