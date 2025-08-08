@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .setor import Setor
+from core.models import Setor
 
 class SetorSerializer(ModelSerializer):
     class Meta:
