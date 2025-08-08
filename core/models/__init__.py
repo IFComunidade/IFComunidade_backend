@@ -1,0 +1,1 @@
+from .tipo_setor import TipoSetor
