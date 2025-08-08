@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import TipoSetor
+from .tipo_setor import TipoSetor
 
 class TipoSetorSerializer(ModelSerializer):
     class Meta:
