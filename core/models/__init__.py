@@ -3,5 +3,6 @@ from .categoria import Categoria
 from .curso import Curso
 from .pessoa import Pessoa
 from .setor import Setor
+from .ocorrencia import Ocorrencia
 from .postagem import Postagem
 from .representante import Representante
