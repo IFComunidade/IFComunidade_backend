@@ -8,4 +8,4 @@ class Setor(models.Model):
     sigla = models.CharField(max_length=10)
     
     def __str__(self):
-        return f"{self.nome ({self.sigla})}"
+        return f"{self.nome} ({self.sigla})"
