@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from core.curso import Curso
+from core.models import Curso
 
 class CursoSerializer(ModelSerializer):
     

@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from core.representante import Representante
+from core.models import Representante
 
 class RepresentanteSerializer(ModelSerializer):
     
