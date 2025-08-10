@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from core.opcao import Opcao
+from core.models import Opcao
 
 class OpcaoSerializer(ModelSerializer):
     

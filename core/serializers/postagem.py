@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from core.postagem import Postagem
+from core.models import Postagem
 
 class PostagemSerializer(ModelSerializer):
     
