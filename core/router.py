@@ -3,3 +3,4 @@ from core import views
 router = DefaultRouter()
 
 router.register(r'setores', views.SetorViewSet)
+router.register(r'ocorrencias', views.OcorrenciaViewSet)
