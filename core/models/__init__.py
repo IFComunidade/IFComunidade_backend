@@ -6,3 +6,4 @@ from .setor import Setor
 from .ocorrencia import Ocorrencia
 from .postagem import Postagem
 from .representante import Representante
+from .opcao import Opcao
