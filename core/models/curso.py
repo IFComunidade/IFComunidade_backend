@@ -5,3 +5,7 @@ class Curso (models.Model):
 
     def __str__ (self):
         return self.nome
+    
+    class Meta:
+        verbose_name = "Curso"
+        verbose_name_plural = "Cursos"

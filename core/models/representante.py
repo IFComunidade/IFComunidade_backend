@@ -8,3 +8,7 @@ class Representante (models.Model):
 
     def __str__(self):
         return f"{self.pessoa.nome} - {self.setor}"
+    
+    class Meta:
+        verbose_name = "Representant"
+        verbose_name_plural = "Representantes"
