@@ -15,3 +15,7 @@ class Postagem(models.Model):
     
     def __str__(self):
         return self.titulo
+    
+    class Meta:
+        verbose_name = "Postagem"
+        verbose_name_plural = "Postagens"

@@ -16,3 +16,7 @@ class Ocorrencia (models.Model):
         ('S', 'Sugestão'),
         ('R', 'Reclamação'),
     ])
+    
+    class Meta:
+        verbose_name = "Ocorrência"
+        verbose_name_plural = "Ocorrências"

@@ -5,3 +5,7 @@ class TipoSetor (models.Model):
 
     def __str__ (self):
         return self.nome
+    
+    class Meta:
+        verbose_name = "Tipo setor"
+        verbose_name_plural = "Tipo setor"
