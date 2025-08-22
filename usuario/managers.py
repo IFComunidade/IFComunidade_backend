@@ -22,15 +22,3 @@ class UsuarioManager(BaseUserManager):
         
         return self.create_user(email=email, password=password, **extra_fields)
     
-
-class AlunoManager(UsuarioManager):
-    def get_queryset(self, *args, **kwargs):
-        return (
-            super().get_queryset(*args, **kwargs).filter(tipo=self.model.TyperUser.ALUNO)
-        )
-        
-class SetorManager(UsuarioManager):
-    def get_queryset(self, *args, **kwargs):
-        return (
-            super().get_queryset(*args, **kwargs).filter(tipo=self.model.TyperUser.SETOR)
-        )
