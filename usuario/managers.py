@@ -1,5 +1,4 @@
 from django.contrib.auth.base_user import BaseUserManager
-
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, password, **extra_fields):
         if not email:
@@ -22,3 +21,16 @@ class UsuarioManager(BaseUserManager):
             raise ValueError("Superuser precisa ter is_superuser=True")
         
         return self.create_user(email=email, password=password, **extra_fields)
+    
+
+class AlunoManager(UsuarioManager):
+    def get_queryset(self, *args, **kwargs):
+        return (
+            super().get_queryset(*args, **kwargs).filter(tipo=self.model.TyperUser.ALUNO)
+        )
+        
+class SetorManager(UsuarioManager):
+    def get_queryset(self, *args, **kwargs):
+        return (
+            super().get_queryset(*args, **kwargs).filter(tipo=self.model.TyperUser.SETOR)
+        )
