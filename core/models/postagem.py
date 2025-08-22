@@ -1,8 +1,6 @@
 from django.db import models
-from .setor import Setor
-
 class Postagem(models.Model):
-    setor = models.ForeignKey(Setor, on_delete=models.CASCADE, related_name="setor")
+   # setor = models.ForeignKey(Setor, on_delete=models.CASCADE, related_name="setor")
     TIPO_POSTAGEM_CHOICES = (
         ("A", "Aviso"),
         ("E", "Enquete"),
