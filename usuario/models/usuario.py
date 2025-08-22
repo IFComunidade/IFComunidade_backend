@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from usuario.managers import UsuarioManager
+from usuario.managers import UsuarioManager, AlunoManager, SetorManager
 
 class Usuario(AbstractUser):
 
@@ -12,4 +12,22 @@ class Usuario(AbstractUser):
     
     objects = UsuarioManager()
     
+class Aluno(Usuario):
+    objects = AlunoManager()
+    class Meta:
+        proxy = True
+        
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.tipo = Usuario.TipoUsuario.ALUNO
+        return super().save(*args, **kwargs)
     
+class Setor(Usuario):
+    objects = SetorManager()
+    class Meta:
+        proxy = True
+        
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.tipo = Usuario.TipoUsuario.SETOR
+        return super().save(*args, **kwargs)
