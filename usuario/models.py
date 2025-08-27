@@ -43,3 +43,7 @@ class Setor(models.Model):
     
     def __str__(self):
         return f"{self.usuario.nome} ({self.sigla})"
+    
+    class Meta:
+        verbose_name = "Setor"
+        verbose_name_plural = "Setores"
