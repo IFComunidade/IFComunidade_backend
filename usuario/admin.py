@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from .forms import CustomUserChangeForm, CustomUserCreationForm
-from .models import Usuario, Aluno, Setor
+from .models import Usuario
 
 
 @admin.register(Usuario)
@@ -58,6 +58,3 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ("email",)
     ordering = ("email",)
     readonly_fields = ["date_joined", "last_login"]
-
-admin.site.register(Aluno)
-admin.site.register(Setor)

@@ -6,5 +6,3 @@ app_name = "usuario"
 
 router = DefaultRouter()
 router.register("usuarios", views.UsuarioViewSet)
-router.register("alunos", views.AlunoViewSet)
-router.register("setores", views.SetorViewSet)
