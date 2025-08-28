@@ -6,9 +6,14 @@ from .managers import CustomUserManager
 
 
 class Usuario(AbstractUser):
+    class TipoUser(models.IntegerChoices):
+        ALUNO = 1, "Aluno"
+        SETOR = 2, "Setor"
+    
     username = None
     email = models.EmailField(_("e-mail address"), unique=True)
     nome = models.CharField(_("Nome"), max_length=120)
+    tipo = models.IntegerField(_("Tipo de usuário"), choices=TipoUser.choices, default=TipoUser.ALUNO)
     
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -37,6 +42,7 @@ class Aluno(models.Model):
     class Meta:
         verbose_name = "Aluno"
         verbose_name_plural = "Alunos"
+        
 class Setor(models.Model):
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     sigla = models.CharField(max_length=10, unique=True)
