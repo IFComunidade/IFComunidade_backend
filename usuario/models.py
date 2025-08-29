@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from core.models import Curso
 from .managers import CustomUserManager
+from uploader.models import Image
 
 
 class Usuario(AbstractUser):
@@ -10,6 +11,7 @@ class Usuario(AbstractUser):
         ALUNO = 1, "Aluno"
         SETOR = 2, "Setor"
     
+    foto = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True, default=None,)
     username = None
     email = models.EmailField(_("e-mail address"), unique=True)
     nome = models.CharField(_("Nome"), max_length=120)
