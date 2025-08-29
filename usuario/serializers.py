@@ -8,7 +8,7 @@ class UsuarioSerializer(ModelSerializer):
     confirmar_senha = serializers.CharField(write_only=True)
     class Meta:
         model = Usuario
-        fields = ["id", "email", "nome", "password", "confirmar_senha", "cpf", "matricula", "curso", "sigla"]
+        fields = ["id", "email", "nome", "password", "confirmar_senha", "cpf", "matricula", "curso", "sigla", "tipo"]
         
     def validate(self, attrs):
         if attrs['password'] != attrs['confirmar_senha']:
@@ -22,6 +22,7 @@ class UsuarioSerializer(ModelSerializer):
             nome = validated_data.get('nome'),
             matricula = validated_data.get('matricula'),
             curso = validated_data.get('curso'),
+            tipo = validated_data.get('tipo'),
             cpf = validated_data.get('cpf'),
             sigla = validated_data.get('sigla'),
         )
