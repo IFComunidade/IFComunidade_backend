@@ -1,5 +1,5 @@
 from django.db import models
-
+from uploader.models import Image
 class Ocorrencia (models.Model):
     titulo = models.CharField(max_length=120)
     texto = models.CharField(max_length=1000)
@@ -17,6 +17,14 @@ class Ocorrencia (models.Model):
         ('R', 'Reclamação'),
     ])
     
+    imagem = models.ForeignKey(
+        Image,
+        related_name="+",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        default=None,
+    )
     class Meta:
         verbose_name = "Ocorrência"
         verbose_name_plural = "Ocorrências"
