@@ -1,5 +1,6 @@
 from django.db import models
 from uploader.models import Image
+from usuario.models import Usuario
 class Ocorrencia (models.Model):
     titulo = models.CharField(max_length=120)
     texto = models.CharField(max_length=1000)
@@ -16,6 +17,10 @@ class Ocorrencia (models.Model):
         ('S', 'Sugestão'),
         ('R', 'Reclamação'),
     ])
+
+    # setor = models.ForeignKey(S on_delete=models.CASCADE)
+
+    usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name="ocorrencias")
     
     imagem = models.ForeignKey(
         Image,

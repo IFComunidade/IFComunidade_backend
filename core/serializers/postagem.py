@@ -15,4 +15,4 @@ class PostagemSerializer(ModelSerializer):
     
     class Meta:
         model = Postagem
-        fields = '__all__'    
+        fields = '__all__'   
