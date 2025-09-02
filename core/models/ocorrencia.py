@@ -18,8 +18,12 @@ class Ocorrencia (models.Model):
         ('R', 'Reclamação'),
     ])
 
-    # setor = models.ForeignKey(S on_delete=models.CASCADE)
-
+    setor = models.ForeignKey(
+    Usuario,
+    on_delete=models.CASCADE,
+    related_name='ocorrencias_recebidas',
+    limit_choices_to={'tipo': Usuario.TipoUser.SETOR}
+)
     usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name="ocorrencias")
     
     imagem = models.ForeignKey(
