@@ -1,5 +1,6 @@
 from django.db import models
 from uploader.models import Image
+from usuario.models import Usuario
 class Ocorrencia (models.Model):
     titulo = models.CharField(max_length=120)
     texto = models.CharField(max_length=1000)
@@ -16,6 +17,14 @@ class Ocorrencia (models.Model):
         ('S', 'Sugestão'),
         ('R', 'Reclamação'),
     ])
+
+    setor = models.ForeignKey(
+    Usuario,
+    on_delete=models.CASCADE,
+    related_name='ocorrencias_recebidas',
+    limit_choices_to={'tipo': Usuario.TipoUser.SETOR}
+)
+    usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name="ocorrencias")
     
     imagem = models.ForeignKey(
         Image,
@@ -28,3 +37,6 @@ class Ocorrencia (models.Model):
     class Meta:
         verbose_name = "Ocorrência"
         verbose_name_plural = "Ocorrências"
+
+    def __str__(self):
+        return self.titulo

@@ -1,6 +1,6 @@
 from django.db import models
 from uploader.models import Image
-
+from usuario.models import Usuario
 
 class Postagem(models.Model):
 
@@ -20,6 +20,8 @@ class Postagem(models.Model):
         blank=True,
         default=None,
     )
+
+    usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name="postagens")
 
     def __str__(self):
         return self.titulo
