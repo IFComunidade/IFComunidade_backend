@@ -37,3 +37,6 @@ class Ocorrencia (models.Model):
     class Meta:
         verbose_name = "Ocorrência"
         verbose_name_plural = "Ocorrências"
+
+    def __str__(self):
+        return self.titulo
