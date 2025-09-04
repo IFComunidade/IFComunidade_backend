@@ -7,11 +7,11 @@ class Ocorrencia (models.Model):
     status = models.CharField(choices=[
         ('E', 'Entregue'),
         ('A', 'Em analise'),
-        ('C', 'Concluído'),
+        ('CR', 'Concluído (Resolvido)'),
+        ('CN', "Concluído (Não resolvido)"),
     ])
-    anonima = models.BooleanField
+    anonima = models.BooleanField()
     data = models.DateField()
-    anexo = models.CharField(max_length=40)
     tipo_ocorrencia = models.CharField(choices=[
         ('D', 'Denúncia'),
         ('S', 'Sugestão'),
@@ -20,7 +20,7 @@ class Ocorrencia (models.Model):
 
     setor = models.ForeignKey(
     Usuario,
-    on_delete=models.CASCADE,
+    on_delete=models.PROTECT,
     related_name='ocorrencias_recebidas',
     limit_choices_to={'tipo': Usuario.TipoUser.SETOR}
 )
@@ -29,7 +29,7 @@ class Ocorrencia (models.Model):
     imagem = models.ForeignKey(
         Image,
         related_name="+",
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
         default=None,
