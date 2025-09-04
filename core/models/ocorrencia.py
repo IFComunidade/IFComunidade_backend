@@ -4,14 +4,15 @@ from usuario.models import Usuario
 class Ocorrencia (models.Model):
     titulo = models.CharField(max_length=120)
     texto = models.CharField(max_length=1000)
-    status = models.CharField(choices=[
-        ('E', 'Entregue'),
-        ('A', 'Em analise'),
-        ('CR', 'Concluído (Resolvido)'),
-        ('CN', "Concluído (Não resolvido)"),
-    ])
+    class Status(models.IntegerChoices):
+       ENTREGUE = 1, "Entregue"
+       EM_ANALISE = 2, "Em analise"
+       CONCLUIDO_RESOLVIDO = 3, "Concluído"
+       CONCLUIDO_NAO_RESOLVIDO = 4, "Concluído não resolvido"
+
+    status = models.IntegerField(choices=Status.choices, default=Status.ENTREGUE)
     anonima = models.BooleanField()
-    data = models.DateField()
+    data = models.DateField(auto_now_add=True)
     tipo_ocorrencia = models.CharField(choices=[
         ('D', 'Denúncia'),
         ('S', 'Sugestão'),
