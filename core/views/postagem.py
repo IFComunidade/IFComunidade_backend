@@ -3,7 +3,9 @@ from core.models import Postagem
 from core.serializers import PostagemSerializer
 from rest_framework.exceptions import PermissionDenied
 from usuario.models import Usuario
+from drf_spectacular.utils import extend_schema
 
+@extend_schema(tags=["Postagem"])
 class PostagemViewSet(ModelViewSet):
     queryset = Postagem.objects.all()
     serializer_class = PostagemSerializer

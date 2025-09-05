@@ -3,8 +3,8 @@ from core.models import Tramite, Ocorrencia
 from core.serializers import TramiteSerializer
 from rest_framework.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
-
-
+from drf_spectacular.utils import extend_schema
+@extend_schema(tags=["Trâmite"])
 class TramiteViewSet(ModelViewSet):
     queryset = Tramite.objects.all()
     serializer_class = TramiteSerializer
