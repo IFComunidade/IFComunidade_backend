@@ -4,7 +4,9 @@ from core.models import Ocorrencia
 from core.serializers import OcorrenciaSerializer
 from usuario.models import Usuario
 from rest_framework.exceptions import PermissionDenied
+from drf_spectacular.utils import extend_schema
 
+@extend_schema(tags=["Ocorrência"])
 class OcorrenciaViewSet(ModelViewSet):
     queryset = Ocorrencia.objects.all()
     serializer_class = OcorrenciaSerializer

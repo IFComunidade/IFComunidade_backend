@@ -5,3 +5,4 @@ class CategoriaSerializer(ModelSerializer):
     class Meta:
         model = Categoria
         fields = '__all__'
+        depth = 1
