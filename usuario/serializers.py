@@ -15,18 +15,11 @@ class UsuarioSerializer(ModelSerializer):
     )
     foto = ImageSerializer(required=False, read_only=True)
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
-    confirmar_senha = serializers.CharField(write_only=True)
     class Meta:
         model = Usuario
-        fields = ["id", "email", "nome", "password", "confirmar_senha", "cpf", "matricula", "curso", "sigla", "tipo", "foto", "foto_attachment_key"]
-        
-    def validate(self, attrs):
-        if attrs['password'] != attrs['confirmar_senha']:
-            raise serializers.ValidationError({"password": "As senhas não coincidem"})
-        return attrs
+        fields = ["id", "email", "nome", "password", "cpf", "matricula", "curso", "sigla", "tipo", "foto", "foto_attachment_key"]
         
     def create(self, validated_data):
-        validated_data.pop("confirmar_senha")
         user = Usuario.objects.create_user(
             email = validated_data['email'],
             password = validated_data['password'],
