@@ -22,7 +22,7 @@ class Usuario(AbstractUser):
     sigla = models.CharField(_("Sigla"), max_length=10, null=True, blank=True)
     
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["tipo"]
+    REQUIRED_FIELDS = []
     EMAIL_FIELD = "email"
 
     objects = CustomUserManager()
