@@ -1,4 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from core.models import Postagem
 from core.serializers import PostagemSerializer
 from rest_framework.exceptions import PermissionDenied
@@ -9,7 +10,6 @@ from drf_spectacular.utils import extend_schema
 class PostagemViewSet(ModelViewSet):
     queryset = Postagem.objects.all()
     serializer_class = PostagemSerializer
-
     
     def perform_create(self, serializer):
         usuario: Usuario = self.request.user  # type: ignore
@@ -18,3 +18,8 @@ class PostagemViewSet(ModelViewSet):
             raise PermissionDenied("Só setores devem criar postagens.")
 
         serializer.save(usuario=usuario)
+        
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']: 
+            return [AllowAny()]
+        return [IsAuthenticated()]
