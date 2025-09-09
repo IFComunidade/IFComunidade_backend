@@ -12,7 +12,7 @@ class PostagemSerializer(ModelSerializer):
         write_only = True,
     )
     imagem = ImageSerializer(required=False, read_only=True)
-    
+
     class Meta:
         model = Postagem
         fields = '__all__'   
