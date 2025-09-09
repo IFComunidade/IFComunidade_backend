@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer, SlugRelatedField
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
 from .models import Usuario
 from uploader.models import Image
@@ -11,6 +12,7 @@ class UsuarioSerializer(ModelSerializer):
         queryset=Image.objects.all(),
         slug_field="attachment_key",
         required = False,
+        allow_null = True,
         write_only=True,
     )
     foto = ImageSerializer(required=False, read_only=True)
@@ -33,3 +35,11 @@ class UsuarioSerializer(ModelSerializer):
         )
 
         return user
+    
+## CUSTOMIZANDO SERIALIZER PARA TOKEN
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        data['user'] = UsuarioSerializer(self.user).data
+        return data
