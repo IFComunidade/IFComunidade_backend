@@ -15,10 +15,6 @@ class UsuarioSerializer(ModelSerializer):
         allow_null = True,
         write_only=True,
     )
-    curso = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field='nome'
-    )
     foto = ImageSerializer(required=False, read_only=True)
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     class Meta:
