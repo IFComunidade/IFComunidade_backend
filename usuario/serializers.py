@@ -17,6 +17,9 @@ class UsuarioSerializer(ModelSerializer):
     )
     foto = ImageSerializer(required=False, read_only=True)
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+    cpf = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    sigla = serializers.CharField(required=False, allow_blank=True, allow_null=True) 
+    matricula = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     class Meta:
         model = Usuario
         fields = ["id", "email", "nome", "password", "cpf", "matricula", "curso", "sigla", "tipo", "foto", "foto_attachment_key"]
@@ -27,11 +30,11 @@ class UsuarioSerializer(ModelSerializer):
             password = validated_data['password'],
             foto = validated_data.get('foto'),
             nome = validated_data.get('nome'),
-            matricula = validated_data.get('matricula'),
+            matricula = validated_data.get('matricula') or None,
             curso = validated_data.get('curso'),
             tipo = validated_data.get('tipo'),
-            cpf = validated_data.get('cpf'),
-            sigla = validated_data.get('sigla'),
+            cpf = validated_data.get('cpf') or None,
+            sigla = validated_data.get('sigla') or None,
         )
 
         return user
