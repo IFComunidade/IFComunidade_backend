@@ -12,13 +12,13 @@ class Usuario(AbstractUser):
         SETOR = 2, "Setor"
     
     foto = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True, default=None,)
-    username = None
+    username = models.CharField(_("Nome de usuário"), null=True, blank=True)
     email = models.EmailField(_("e-mail address"), unique=True)
     nome = models.CharField(_("Nome"), max_length=120)
     tipo = models.IntegerField(_("Tipo de usuário"), choices=TipoUser.choices, default=TipoUser.ALUNO)
     matricula = models.CharField(_("Matrícula"), max_length=10, unique=True, null=True, blank=True)
     curso = models.ForeignKey(Curso, on_delete=models.PROTECT, null=True, blank=True, related_name="alunos")
-    cpf = models.CharField(_("CPF"), max_length=14, unique=True, null=True, blank=True)
+    cpf = models.CharField(_("CPF"), max_length=14, null=True, blank=True)
     sigla = models.CharField(_("Sigla"), max_length=10, null=True, blank=True)
     
     USERNAME_FIELD = "email"
