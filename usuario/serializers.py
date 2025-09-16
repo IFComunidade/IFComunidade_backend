@@ -19,12 +19,13 @@ class UsuarioSerializer(ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     class Meta:
         model = Usuario
-        fields = ["id", "email", "nome", "password", "cpf", "matricula", "curso", "sigla", "tipo", "foto", "foto_attachment_key"]
+        fields = ["id", "email", "username", "nome", "password", "cpf", "matricula", "curso", "sigla", "tipo", "foto", "foto_attachment_key"]
         
     def create(self, validated_data):
         user = Usuario.objects.create_user(
             email = validated_data['email'],
             password = validated_data['password'],
+            username = validated_data.get('username'),
             foto = validated_data.get('foto'),
             nome = validated_data.get('nome'),
             matricula = validated_data.get('matricula'),

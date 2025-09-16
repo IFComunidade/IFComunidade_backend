@@ -12,7 +12,7 @@ class Usuario(AbstractUser):
         SETOR = 2, "Setor"
     
     foto = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True, blank=True, default=None,)
-    username = models.CharField(_("Nome de usuário"), null=True, blank=True)
+    username = models.CharField(_("Nome de usuário"), null=True, blank=True, unique=True)
     email = models.EmailField(_("e-mail address"), unique=True)
     nome = models.CharField(_("Nome"), max_length=120)
     tipo = models.IntegerField(_("Tipo de usuário"), choices=TipoUser.choices, default=TipoUser.ALUNO)
