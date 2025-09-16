@@ -13,12 +13,11 @@ class Ocorrencia (models.Model):
     status = models.IntegerField(choices=Status.choices, default=Status.ENTREGUE)
     anonima = models.BooleanField()
     data = models.DateField(auto_now_add=True)
-    tipo_ocorrencia = models.CharField(choices=[
-        ('D', 'Denúncia'),
-        ('S', 'Sugestão'),
-        ('R', 'Reclamação'),
-    ])
-
+    class tipo_ocorrencia(models.IntegerChoices):
+        DENUNCIA = 1, 'Denúncia'
+        SUGESTAO = 2, 'Sugestão'
+        QUEIXA = 3, 'Queixa'
+    tipo = models.IntegerField(choices=tipo_ocorrencia.choices)
     setor = models.ForeignKey(
     Usuario,
     on_delete=models.PROTECT,
