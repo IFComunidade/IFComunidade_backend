@@ -3,7 +3,7 @@ from uploader.models import Image
 from usuario.models import Usuario
 class Ocorrencia (models.Model):
     titulo = models.CharField(max_length=120)
-    texto = models.CharField(max_length=1000)
+    texto = models.TextField()
     class Status(models.IntegerChoices):
        ENTREGUE = 1, "Entregue"
        EM_ANALISE = 2, "Em analise"
