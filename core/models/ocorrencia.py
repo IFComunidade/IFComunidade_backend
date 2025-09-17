@@ -1,9 +1,11 @@
 from django.db import models
 from uploader.models import Image
 from usuario.models import Usuario
+from core.models import Categoria
 class Ocorrencia (models.Model):
     titulo = models.CharField(max_length=120)
     texto = models.TextField()
+    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
     class Status(models.IntegerChoices):
        ENTREGUE = 1, "Entregue"
        EM_ANALISE = 2, "Em analise"
