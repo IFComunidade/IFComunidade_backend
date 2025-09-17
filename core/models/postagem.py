@@ -4,14 +4,9 @@ from usuario.models import Usuario
 
 class Postagem(models.Model):
 
-    TIPO_POSTAGEM_CHOICES = (
-        ("A", "Aviso"),
-        ("E", "Enquete"),
-    )
     titulo = models.CharField(max_length=120)
     descricao = models.CharField(max_length=1000)
-    tipo_postagem = models.CharField(max_length=1, choices=TIPO_POSTAGEM_CHOICES)
-    data = models.DateField()
+    data = models.CharField(max_length=15)
     imagem = models.ForeignKey(
         Image,
         related_name="+",

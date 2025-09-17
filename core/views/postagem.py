@@ -14,6 +14,9 @@ class PostagemViewSet(ModelViewSet):
     def perform_create(self, serializer):
         usuario: Usuario = self.request.user  # type: ignore
 
+        if not isinstance(usuario, Usuario):
+            raise PermissionDenied("Usuário inválido ou não autenticado.")
+        
         if usuario.tipo != Usuario.TipoUser.SETOR:
             raise PermissionDenied("Só setores devem criar postagens.")
 
