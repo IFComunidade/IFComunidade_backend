@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
+from datetime import timedelta
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,6 +33,14 @@ SECRET_KEY = 'django-insecure-v39+8+c6yi#5p0h=mk+&sl6zi$+s-a1qje7%+*=08i24jz1el-
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
+#Configs token
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=180),
+    "REFRESH_TOKEN_LIFETIME":timedelta(days=1),
+}
 
 
 # Application definition

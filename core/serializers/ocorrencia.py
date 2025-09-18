@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from uploader.models import Image
 from uploader.serializers import ImageSerializer
+from usuario.serializers import UsuarioSerializer
 from core.models import Ocorrencia
 
 class OcorrenciaSerializer(serializers.ModelSerializer):
@@ -14,6 +15,7 @@ class OcorrenciaSerializer(serializers.ModelSerializer):
     )
 
     imagem = ImageSerializer(required=False, read_only=True)
+    usuario = UsuarioSerializer(read_only=True)
     
     categoria = serializers.PrimaryKeyRelatedField(
         queryset=Ocorrencia._meta.get_field('categoria').related_model.objects.all(),
