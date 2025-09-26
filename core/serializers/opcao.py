@@ -6,3 +6,4 @@ class OpcaoSerializer(ModelSerializer):
     class Meta:
         model = Opcao
         fields = '__all__'
+        depth = 1
