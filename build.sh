@@ -2,14 +2,14 @@
 # Sai do script se houver algum erro
 set -o errexit
 
-# Atualiza o pip (opcional)
+# Atualiza o pip
 pip install --upgrade pip
 
-# Instala as dependências via PDM
-pdm install
+# Instala as dependências
+pip install -r requirements.txt
 
-# Coleta os arquivos estáticos (Django)
-pdm run python manage.py collectstatic --no-input
+# Coleta os arquivos estáticos
+python manage.py collectstatic --no-input
 
-# Aplica as migrações (Django)
-pdm run python manage.py migrate
+# Aplica as migrações
+python manage.py migrate
