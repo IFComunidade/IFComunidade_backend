@@ -171,16 +171,8 @@ USE_TZ = True
 MODE = os.getenv("MODE", "DEVELOPMENT")
 
 STATIC_URL = '/static/'
-
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    MEDIA_URL = '/media/'
-else:
-    MY_IP = os.getenv("MY_IP", "127.0.0.1")
-    MEDIA_URL = f"http://{MY_IP}:19003/media/"
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
